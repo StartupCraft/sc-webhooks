@@ -20,3 +20,10 @@ Layout/SpaceInsideHashLiteralBraces:
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+    - 'app/controllers/**/*'
+
+Style/AccessModifierDeclarations:
+  Enabled: false

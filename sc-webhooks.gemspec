@@ -19,10 +19,11 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['spec/**/*']
 
-  s.add_dependency 'pg', '~> 1.0'
+  s.add_dependency 'pg', '>= 0.20'
   s.add_dependency 'rails', '>= 5.1', '< 6.0'
 
   s.add_development_dependency 'factory_bot_rails', '~> 4.8'
+  s.add_development_dependency 'pry-byebug'
   s.add_development_dependency 'rspec-rails', '~> 3.7'
   s.add_development_dependency 'rubocop', '~> 0.58'
 end

@@ -3,6 +3,8 @@
 module SC
   module Webhooks
     class Engine < ::Rails::Engine
+      isolate_namespace SC::Webhooks
+
       initializer :append_migrations do |app|
         app.config.paths['db/migrate'] += config.paths['db/migrate'].expanded unless app.root.to_s.match?(root.to_s)
       end
