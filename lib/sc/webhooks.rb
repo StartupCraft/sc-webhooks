@@ -2,6 +2,7 @@
 
 require 'sc/webhooks/railtie'
 require 'sc/webhooks/engine'
+require 'sc/webhooks/response_handler'
 
 require 'dry-configurable'
 require 'dry-transaction'

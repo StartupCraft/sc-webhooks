@@ -21,13 +21,19 @@ module SC::Webhooks
     private
 
     def match_webhook(input)
-      handler = handlers[webhook_id]
+      handler = choose_handler(webhook_id)
 
       if handler.present?
         Success(input: input, handler: handler)
       else
         Failure(false)
       end
+    end
+
+    def choose_handler(webhook_id)
+      handler = handlers[webhook_id]
+
+      handler.is_a?(Hash) ? handler.fetch(:action_class) : handler
     end
 
     def handle(input:, handler:)

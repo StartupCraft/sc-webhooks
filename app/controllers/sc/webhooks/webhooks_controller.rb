@@ -3,20 +3,10 @@
 module SC::Webhooks
   class WebhooksController < ActionController::Metal
     def event
-      ::SC::Webhooks::EventAction
-        .new(webhook_id: params.fetch(:webhook_id))
-        .call(request) do |m|
-        m.success do
-          self.status = 200
-        end
+      webhook_id = params.fetch(:webhook_id)
 
-        m.failure :match_webhook do
-          self.status = 404
-        end
-
-        m.failure do
-          self.status = 400
-        end
+      ::SC::Webhooks::EventAction.new(webhook_id: webhook_id).call(request) do |monad|
+        ::SC::Webhooks::ResponseHandler.new.call(webhook_id, self, monad)
       end
     end
   end
