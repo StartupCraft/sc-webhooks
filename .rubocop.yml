@@ -28,3 +28,8 @@ Metrics/MethodLength:
 
 Style/AccessModifierDeclarations:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+    - db/migrate/*.rb
